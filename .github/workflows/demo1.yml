@@ -3,9 +3,18 @@ on:
   pull_request:
     types: 
       - opened
+      # - closed
       # - edited
       # types: [opened, edited] can also written activity types like this
   workflow_dispatch:
+  push:
+    branches:
+      - main # this will only cover main branch
+      - 'dev-*' # dev-new or dev-this-is-new
+      - 'feature/**'  #  feat/new or feat/new/button or anything like this
+      # developer-1
+    paths-ignore:
+      - 'github/workflows/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
